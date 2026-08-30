@@ -9,7 +9,6 @@
 
   :root{
     --ink: #121317;
-    --paper: #F4F3EF;
     --panel: #1B1C22;
     --panel-line: #33353F;
     --signal: #FF5A1F;
@@ -39,10 +38,7 @@
     padding: 48px 20px 80px;
   }
 
-  .wrap{
-    width:100%;
-    max-width: 880px;
-  }
+  .wrap{ width:100%; max-width: 880px; }
 
   header{
     display:flex;
@@ -60,7 +56,6 @@
     color: var(--muted);
     text-transform: uppercase;
   }
-
   .brand b{ color: var(--signal); }
 
   h1{
@@ -70,19 +65,9 @@
     margin: 6px 0 10px;
     letter-spacing: -0.01em;
   }
+  h1 .ext{ font-family: var(--mono); color: var(--signal); font-weight: 500; }
 
-  h1 .ext{
-    font-family: var(--mono);
-    color: var(--signal);
-    font-weight: 500;
-  }
-
-  .sub{
-    color: var(--muted);
-    font-size: 15px;
-    max-width: 56ch;
-    line-height: 1.5;
-  }
+  .sub{ color: var(--muted); font-size: 15px; max-width: 56ch; line-height: 1.5; }
 
   .panel{
     background: var(--panel);
@@ -101,15 +86,8 @@
     transition: border-color .15s ease, background .15s ease;
     position: relative;
   }
-
-  .dropzone.drag{
-    border-color: var(--signal);
-    background: rgba(255,90,31,0.06);
-  }
-
-  .dropzone input{
-    position:absolute; inset:0; opacity:0; cursor:pointer;
-  }
+  .dropzone.drag{ border-color: var(--signal); background: rgba(255,90,31,0.06); }
+  .dropzone input{ position:absolute; inset:0; opacity:0; cursor:pointer; }
 
   .dz-icon{
     font-family: var(--mono);
@@ -122,18 +100,8 @@
     border-radius: 2px;
     margin-bottom: 16px;
   }
-
-  .dz-title{
-    font-size: 17px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-
-  .dz-hint{
-    font-family: var(--mono);
-    font-size: 12.5px;
-    color: var(--muted);
-  }
+  .dz-title{ font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .dz-hint{ font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
 
   .preview-row{
     display:none;
@@ -143,7 +111,6 @@
     padding-top: 22px;
     border-top: 1px solid var(--panel-line);
   }
-
   .preview-row.show{ display:flex; }
 
   .thumb{
@@ -156,21 +123,8 @@
   }
 
   .file-meta{ flex:1; min-width:0; }
-
-  .file-name{
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .file-sub{
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
+  .file-name{ font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .file-sub{ font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 2px; }
 
   .change-btn{
     font-family: var(--mono);
@@ -193,11 +147,7 @@
     margin: 26px 0 12px;
   }
 
-  .formats{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+  .formats{ display:flex; flex-wrap: wrap; gap: 10px; }
 
   .fmt{
     font-family: var(--mono);
@@ -211,14 +161,10 @@
     cursor: pointer;
     transition: all .12s ease;
   }
-
   .fmt:hover{ border-color: var(--muted); }
-
-  .fmt.active{
-    background: var(--signal);
-    border-color: var(--signal);
-    color: #1B1C22;
-  }
+  .fmt.active{ background: var(--signal); border-color: var(--signal); color: #1B1C22; }
+  .fmt:disabled{ opacity: .3; cursor: not-allowed; }
+  .fmt:disabled:hover{ border-color: var(--panel-line); }
 
   .fmt-note{
     font-size: 12px;
@@ -227,6 +173,77 @@
     font-family: var(--mono);
     min-height: 16px;
   }
+
+  /* hotspot picker */
+  .hotspot-box{
+    display:none;
+    margin-top: 18px;
+    padding: 18px;
+    background: #0D0E11;
+    border: 1px solid var(--panel-line);
+    border-radius: 4px;
+  }
+  .hotspot-box.show{ display:block; }
+
+  .hotspot-label{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .hotspot-label b{ color: var(--signal); }
+
+  .hotspot-stage{
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    background: repeating-conic-gradient(#26272E 0% 25%, #1B1C22 0% 50%) 50% / 16px 16px;
+    border: 1px solid var(--panel-line);
+    border-radius: 3px;
+    cursor: crosshair;
+    overflow: hidden;
+  }
+  .hotspot-stage img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit: contain;
+    pointer-events: none;
+  }
+  .hotspot-dot{
+    position:absolute;
+    width: 12px; height: 12px;
+    margin-left: -6px; margin-top: -6px;
+    border-radius: 50%;
+    border: 2px solid var(--signal);
+    background: rgba(255,90,31,0.25);
+    pointer-events: none;
+  }
+  .hotspot-dot::before, .hotspot-dot::after{
+    content:'';
+    position: absolute;
+    background: var(--signal);
+  }
+  .hotspot-dot::before{ width:1px; height:22px; left:50%; top:-11px; transform: translateX(-50%); }
+  .hotspot-dot::after{ height:1px; width:22px; top:50%; left:-11px; transform: translateY(-50%); }
+
+  .size-row{
+    display:flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 14px;
+  }
+  .size-pill{
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 6px 12px;
+    border: 1px solid var(--panel-line);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .size-pill.active{ border-color: var(--teal); color: var(--teal); }
 
   .go-btn{
     width: 100%;
@@ -243,16 +260,10 @@
     letter-spacing: 0.01em;
     transition: opacity .12s ease, transform .12s ease;
   }
-
-  .go-btn:disabled{
-    opacity: 0.35;
-    cursor: not-allowed;
-  }
-
+  .go-btn:disabled{ opacity: 0.35; cursor: not-allowed; }
   .go-btn:not(:disabled):hover{ opacity: 0.9; }
   .go-btn:not(:disabled):active{ transform: scale(0.99); }
 
-  /* terminal log — signature element */
   .terminal{
     background: #0D0E11;
     border: 1px solid var(--panel-line);
@@ -265,10 +276,9 @@
     height: 160px;
     overflow-y: auto;
     display: none;
+    margin-top: 18px;
   }
-
   .terminal.show{ display:block; }
-
   .terminal .line{ white-space: pre-wrap; word-break: break-word; }
   .terminal .ok{ color: var(--teal); }
   .terminal .tag{ color: var(--signal); }
@@ -279,7 +289,6 @@
     vertical-align: -2px;
     animation: blink 1s step-end infinite;
   }
-
   @keyframes blink{ 50%{ opacity: 0; } }
 
   .result{
@@ -294,13 +303,8 @@
     border-radius: 4px;
     flex-wrap: wrap;
   }
-
   .result.show{ display:flex; }
-
-  .result-info{
-    font-size: 14px;
-  }
-
+  .result-info{ font-size: 14px; }
   .result-info b{ color: var(--teal); font-family: var(--mono); }
 
   .dl-btn{
@@ -326,9 +330,7 @@
     line-height: 1.7;
   }
 
-  @media (prefers-reduced-motion: reduce){
-    .cursor{ animation: none; }
-  }
+  @media (prefers-reduced-motion: reduce){ .cursor{ animation: none; } }
 </style>
 </head>
 <body>
@@ -337,8 +339,8 @@
   <header>
     <div>
       <div class="brand">convertidor <b>· local</b></div>
-      <h1>de <span class="ext">.png</span> a <span class="ext">.ico</span><br>y de vuelta.</h1>
-      <p class="sub">Convierte imágenes entre formatos directamente en tu navegador. Nada se sube a un servidor — todo pasa en tu computadora.</p>
+      <h1>de <span class="ext">.png</span> a <span class="ext">.cur</span><br>y de vuelta.</h1>
+      <p class="sub">Convierte imágenes entre formatos, incluyendo cursores (.cur) y cursores animados (.ani) a partir de un GIF. Todo pasa en tu navegador — nada se sube a un servidor.</p>
     </div>
   </header>
 
@@ -365,8 +367,23 @@
       <button class="fmt" data-fmt="jpg">.JPG</button>
       <button class="fmt" data-fmt="webp">.WEBP</button>
       <button class="fmt" data-fmt="ico">.ICO</button>
+      <button class="fmt" data-fmt="cur">.CUR</button>
+      <button class="fmt" data-fmt="ani">.ANI</button>
     </div>
     <div class="fmt-note" id="fmtNote"></div>
+
+    <div class="hotspot-box" id="hotspotBox">
+      <div class="hotspot-label">Toca la imagen para marcar el <b>hotspot</b> — el pixel exacto que actúa como punta del cursor.</div>
+      <div class="hotspot-stage" id="hotspotStage">
+        <img id="hotspotImg" alt="">
+        <div class="hotspot-dot" id="hotspotDot" style="left:50%; top:50%;"></div>
+      </div>
+      <div class="size-row" id="sizeRow">
+        <button class="size-pill active" data-size="32">32×32</button>
+        <button class="size-pill" data-size="48">48×48</button>
+        <button class="size-pill" data-size="64">64×64</button>
+      </div>
+    </div>
 
     <button class="go-btn" id="goBtn" disabled>Convertir archivo</button>
 
@@ -379,7 +396,7 @@
   </div>
 
   <footer>
-    El procesamiento ocurre 100% en tu navegador (Canvas API).<br>
+    El procesamiento ocurre 100% en tu navegador (Canvas API + un parser de GIF y encoders ICO/CUR/ANI escritos a mano).<br>
     Tu imagen nunca sale de tu dispositivo.
   </footer>
 </div>
@@ -399,16 +416,26 @@
   const result = document.getElementById('result');
   const resultName = document.getElementById('resultName');
   const dlBtn = document.getElementById('dlBtn');
+  const hotspotBox = document.getElementById('hotspotBox');
+  const hotspotStage = document.getElementById('hotspotStage');
+  const hotspotImg = document.getElementById('hotspotImg');
+  const hotspotDot = document.getElementById('hotspotDot');
+  const sizeRow = document.getElementById('sizeRow');
 
   let currentFile = null;
   let currentImg = null;
+  let isGif = false;
   let selectedFmt = null;
+  let hotspotRatio = { x: 0.5, y: 0.5 };
+  let cursorSize = 32;
 
   const notes = {
     png: 'Sin pérdida, soporta transparencia. Buen formato de salida general.',
     jpg: 'Con compresión, sin transparencia. Ideal para fotos.',
     webp: 'Comprimido y moderno, soporta transparencia. Archivos más chicos.',
-    ico: 'Genera un ícono multi-resolución (16, 32, 48, 256px) para usar en apps o sitios web.'
+    ico: 'Genera un ícono multi-resolución (16, 32, 48, 256px) para apps o sitios web.',
+    cur: 'Cursor estático de Windows. Elige el punto exacto que "apunta" (hotspot) abajo.',
+    ani: 'Cursor animado de Windows, armado a partir de los cuadros del GIF. Requiere un GIF de entrada.'
   };
 
   function humanSize(bytes){
@@ -426,6 +453,7 @@
   function loadFile(file){
     if (!file || !file.type.startsWith('image/')) return;
     currentFile = file;
+    isGif = file.type === 'image/gif' || /\.gif$/i.test(file.name);
     resetResult();
 
     const url = URL.createObjectURL(file);
@@ -433,10 +461,20 @@
     img.onload = () => {
       currentImg = img;
       thumb.src = url;
+      hotspotImg.src = url;
       fileName.textContent = file.name;
-      fileSub.textContent = `${img.naturalWidth}×${img.naturalHeight} · ${humanSize(file.size)} · ${file.type.split('/')[1].toUpperCase()}`;
+      fileSub.textContent = `${img.naturalWidth}×${img.naturalHeight} · ${humanSize(file.size)} · ${(file.type.split('/')[1]||'').toUpperCase()}`;
       previewRow.classList.add('show');
       dropzone.style.display = 'none';
+
+      // enable/disable ANI depending on input type
+      const aniBtn = formatsWrap.querySelector('[data-fmt="ani"]');
+      aniBtn.disabled = !isGif;
+      if (!isGif && selectedFmt === 'ani') {
+        selectedFmt = null;
+        aniBtn.classList.remove('active');
+        hotspotBox.classList.remove('show');
+      }
       updateGoState();
     };
     img.src = url;
@@ -451,15 +489,12 @@
   ['dragleave','drop'].forEach(ev => dropzone.addEventListener(ev, e => {
     e.preventDefault(); dropzone.classList.remove('drag');
   }));
-  dropzone.addEventListener('drop', e => {
-    const f = e.dataTransfer.files[0];
-    loadFile(f);
-  });
+  dropzone.addEventListener('drop', e => loadFile(e.dataTransfer.files[0]));
 
   changeBtn.addEventListener('click', () => {
     previewRow.classList.remove('show');
     dropzone.style.display = '';
-    currentFile = null; currentImg = null;
+    currentFile = null; currentImg = null; isGif = false;
     fileInput.value = '';
     resetResult();
     updateGoState();
@@ -467,16 +502,34 @@
 
   formatsWrap.addEventListener('click', e => {
     const btn = e.target.closest('.fmt');
-    if (!btn) return;
+    if (!btn || btn.disabled) return;
     [...formatsWrap.children].forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     selectedFmt = btn.dataset.fmt;
     fmtNote.textContent = notes[selectedFmt] || '';
+    hotspotBox.classList.toggle('show', selectedFmt === 'cur' || selectedFmt === 'ani');
     updateGoState();
   });
 
+  hotspotStage.addEventListener('click', e => {
+    const rect = hotspotStage.getBoundingClientRect();
+    const x = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    const y = Math.min(1, Math.max(0, (e.clientY - rect.top) / rect.height));
+    hotspotRatio = { x, y };
+    hotspotDot.style.left = (x*100) + '%';
+    hotspotDot.style.top = (y*100) + '%';
+  });
+
+  sizeRow.addEventListener('click', e => {
+    const btn = e.target.closest('.size-pill');
+    if (!btn) return;
+    [...sizeRow.children].forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    cursorSize = parseInt(btn.dataset.size, 10);
+  });
+
   function updateGoState(){
-    goBtn.disabled = !(currentFile && selectedFmt);
+    goBtn.disabled = !(currentFile && selectedFmt) || (selectedFmt === 'ani' && !isGif);
   }
 
   function typeLine(text, cls, delay){
@@ -492,87 +545,363 @@
     });
   }
 
-  // Minimal ICO encoder: embeds PNG-compressed images per entry (valid since Windows Vista)
-  async function buildIco(img, sizes){
-    const entries = [];
-    for (const size of sizes){
-      const c = document.createElement('canvas');
-      c.width = size; c.height = size;
-      const ctx = c.getContext('2d');
-      ctx.clearRect(0,0,size,size);
-      ctx.drawImage(img, 0, 0, size, size);
-      const blob = await new Promise(r => c.toBlob(r, 'image/png'));
-      const buf = await blob.arrayBuffer();
-      entries.push({ size, data: new Uint8Array(buf) });
+  /* ---------------- GIF decoder ---------------- */
+
+  function parseGIF(buf){
+    const data = new Uint8Array(buf);
+    let p = 0;
+    const u8 = () => data[p++];
+    const u16 = () => { const v = data[p] | (data[p+1] << 8); p += 2; return v; };
+    const skip = n => { p += n; };
+
+    p += 6; // signature "GIF87a"/"GIF89a"
+    const width = u16();
+    const height = u16();
+    const packed = u8();
+    const gctFlag = (packed & 0x80) !== 0;
+    const gctSize = 2 << (packed & 0x07);
+    u8(); // bg color index
+    u8(); // pixel aspect ratio
+
+    let gct = null;
+    if (gctFlag){
+      gct = [];
+      for (let i=0;i<gctSize;i++) gct.push([u8(),u8(),u8()]);
     }
 
+    const frames = [];
+    let gce = null;
+
+    while (p < data.length){
+      const blockId = u8();
+      if (blockId === 0x21){
+        const label = u8();
+        if (label === 0xF9){
+          u8(); // block size (4)
+          const flags = u8();
+          const delay = u16();
+          const transparentIndex = u8();
+          u8(); // terminator
+          gce = {
+            disposal: (flags >> 2) & 0x07,
+            transparent: (flags & 0x01) !== 0,
+            transparentIndex,
+            delay: delay * 10
+          };
+        } else {
+          let size;
+          while ((size = u8()) !== 0) skip(size);
+        }
+      } else if (blockId === 0x2C){
+        const left = u16(), top = u16(), w = u16(), h = u16();
+        const packedI = u8();
+        const lctFlag = (packedI & 0x80) !== 0;
+        const interlace = (packedI & 0x40) !== 0;
+        const lctSize = 2 << (packedI & 0x07);
+        let lct = null;
+        if (lctFlag){
+          lct = [];
+          for (let i=0;i<lctSize;i++) lct.push([u8(),u8(),u8()]);
+        }
+        const minCodeSize = u8();
+        const lzwBytes = [];
+        let size;
+        while ((size = u8()) !== 0){
+          for (let i=0;i<size;i++) lzwBytes.push(u8());
+        }
+        const indices = lzwDecode(minCodeSize, lzwBytes, w*h);
+        frames.push({ left, top, width: w, height: h, interlace, indices, palette: lctFlag ? lct : gct, gce });
+        gce = null;
+      } else if (blockId === 0x3B){
+        break;
+      } else {
+        break;
+      }
+    }
+
+    return { width, height, frames };
+  }
+
+  function lzwDecode(minCodeSize, bytes, pixelCount){
+    let bitPos = 0;
+    const readBit = () => {
+      const byteIndex = bitPos >> 3;
+      const bit = (bytes[byteIndex] >> (bitPos & 7)) & 1;
+      bitPos++;
+      return bit;
+    };
+    const readCode = size => {
+      let code = 0;
+      for (let i=0;i<size;i++) code |= readBit() << i;
+      return code;
+    };
+
+    const clearCode = 1 << minCodeSize;
+    const eoiCode = clearCode + 1;
+    let codeSize, nextCode, dict;
+
+    const resetDict = () => {
+      dict = [];
+      for (let i=0;i<clearCode;i++) dict[i] = [i];
+      dict[clearCode] = [];
+      dict[eoiCode] = null;
+      nextCode = eoiCode + 1;
+      codeSize = minCodeSize + 1;
+    };
+    resetDict();
+
+    const output = new Uint8Array(pixelCount);
+    let outPos = 0, prev = null;
+
+    while (outPos < pixelCount && (bitPos >> 3) < bytes.length){
+      const code = readCode(codeSize);
+      if (code === clearCode){ resetDict(); prev = null; continue; }
+      if (code === eoiCode) break;
+
+      let entry;
+      if (dict[code]) entry = dict[code];
+      else if (code === nextCode && prev) entry = prev.concat([prev[0]]);
+      else break;
+
+      for (let i=0;i<entry.length && outPos < pixelCount;i++) output[outPos++] = entry[i];
+
+      if (prev){
+        dict[nextCode] = prev.concat([entry[0]]);
+        nextCode++;
+        if (nextCode === (1 << codeSize) && codeSize < 12) codeSize++;
+      }
+      prev = entry;
+    }
+    return output;
+  }
+
+  function gifToFrames(arrayBuffer){
+    const gif = parseGIF(arrayBuffer);
+    const { width, height, frames } = gif;
+    const canvas = document.createElement('canvas');
+    canvas.width = width; canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const out = [];
+
+    for (const frame of frames){
+      const disposal = frame.gce ? frame.gce.disposal : 0;
+      let restoreData = null;
+      if (disposal === 3) restoreData = ctx.getImageData(0,0,width,height);
+
+      const imgData = ctx.createImageData(frame.width, frame.height);
+      const palette = frame.palette || [];
+      const transparentIndex = (frame.gce && frame.gce.transparent) ? frame.gce.transparentIndex : -1;
+
+      for (let i=0;i<frame.indices.length;i++){
+        const idx = frame.indices[i];
+        const o = i*4;
+        if (idx === transparentIndex){
+          imgData.data[o+3] = 0;
+        } else {
+          const c = palette[idx] || [0,0,0];
+          imgData.data[o]=c[0]; imgData.data[o+1]=c[1]; imgData.data[o+2]=c[2]; imgData.data[o+3]=255;
+        }
+      }
+
+      ctx.putImageData(imgData, frame.left, frame.top);
+      out.push({ imageData: ctx.getImageData(0,0,width,height), delay: (frame.gce && frame.gce.delay) || 100 });
+
+      if (disposal === 2) ctx.clearRect(frame.left, frame.top, frame.width, frame.height);
+      else if (disposal === 3 && restoreData) ctx.putImageData(restoreData, 0, 0);
+    }
+
+    return { width, height, frames: out };
+  }
+
+  /* ---------------- ICO / CUR / ANI encoders ---------------- */
+
+  async function canvasFromSource(source, size){
+    const c = document.createElement('canvas');
+    c.width = size; c.height = size;
+    const ctx = c.getContext('2d');
+    if (source instanceof ImageData){
+      const tmp = document.createElement('canvas');
+      tmp.width = source.width; tmp.height = source.height;
+      tmp.getContext('2d').putImageData(source, 0, 0);
+      ctx.drawImage(tmp, 0, 0, size, size);
+    } else {
+      ctx.drawImage(source, 0, 0, size, size);
+    }
+    return c;
+  }
+
+  async function buildIco(source, sizes){
+    const entries = [];
+    for (const size of sizes){
+      const c = await canvasFromSource(source, size);
+      const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+      entries.push({ size, data: new Uint8Array(await blob.arrayBuffer()) });
+    }
     const headerSize = 6 + entries.length * 16;
-    let totalSize = headerSize;
-    entries.forEach(e => totalSize += e.data.length);
+    let total = headerSize;
+    entries.forEach(e => total += e.data.length);
 
-    const out = new Uint8Array(totalSize);
+    const out = new Uint8Array(total);
     const view = new DataView(out.buffer);
-
-    view.setUint16(0, 0, true);   // reserved
-    view.setUint16(2, 1, true);   // type: icon
-    view.setUint16(4, entries.length, true);
+    view.setUint16(0,0,true);
+    view.setUint16(2,1,true);
+    view.setUint16(4,entries.length,true);
 
     let offset = headerSize;
-    entries.forEach((e, i) => {
-      const base = 6 + i * 16;
-      const dim = e.size === 256 ? 0 : e.size; // 0 means 256 in ICO spec
-      view.setUint8(base, dim);       // width
-      view.setUint8(base + 1, dim);   // height
-      view.setUint8(base + 2, 0);     // color count
-      view.setUint8(base + 3, 0);     // reserved
-      view.setUint16(base + 4, 1, true);  // planes
-      view.setUint16(base + 6, 32, true); // bit count
-      view.setUint32(base + 8, e.data.length, true);
-      view.setUint32(base + 12, offset, true);
+    entries.forEach((e,i) => {
+      const base = 6 + i*16;
+      const dim = e.size === 256 ? 0 : e.size;
+      view.setUint8(base, dim);
+      view.setUint8(base+1, dim);
+      view.setUint8(base+2, 0);
+      view.setUint8(base+3, 0);
+      view.setUint16(base+4, 1, true);
+      view.setUint16(base+6, 32, true);
+      view.setUint32(base+8, e.data.length, true);
+      view.setUint32(base+12, offset, true);
       out.set(e.data, offset);
       offset += e.data.length;
     });
-
     return new Blob([out], { type: 'image/x-icon' });
   }
 
+  // returns raw bytes (Uint8Array) of a single-image CUR — reused inside .ani frames too
+  async function buildCurBytes(source, size, hotX, hotY){
+    const c = await canvasFromSource(source, size);
+    const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+    const png = new Uint8Array(await blob.arrayBuffer());
+
+    const headerSize = 6 + 16;
+    const out = new Uint8Array(headerSize + png.length);
+    const view = new DataView(out.buffer);
+    view.setUint16(0,0,true);
+    view.setUint16(2,2,true); // type 2 = cursor
+    view.setUint16(4,1,true);
+    const dim = size === 256 ? 0 : size;
+    view.setUint8(6, dim);
+    view.setUint8(7, dim);
+    view.setUint8(8,0);
+    view.setUint8(9,0);
+    view.setUint16(10, hotX, true);
+    view.setUint16(12, hotY, true);
+    view.setUint32(14, png.length, true);
+    view.setUint32(18, headerSize, true);
+    out.set(png, headerSize);
+    return out;
+  }
+
+  function riffChunk(id, dataBytes){
+    const padded = dataBytes.length % 2 === 1;
+    const out = new Uint8Array(8 + dataBytes.length + (padded?1:0));
+    for (let i=0;i<4;i++) out[i] = id.charCodeAt(i);
+    new DataView(out.buffer).setUint32(4, dataBytes.length, true);
+    out.set(dataBytes, 8);
+    return out;
+  }
+
+  async function buildAni(frames, size, hotX, hotY){
+    const curBuffers = [];
+    for (const f of frames) curBuffers.push(await buildCurBytes(f.imageData, size, hotX, hotY));
+    const n = curBuffers.length;
+
+    const anih = new Uint8Array(36);
+    const av = new DataView(anih.buffer);
+    av.setUint32(0, 36, true);
+    av.setUint32(4, n, true);
+    av.setUint32(8, n, true);
+    av.setUint32(12, size, true);
+    av.setUint32(16, size, true);
+    av.setUint32(20, 0, true);
+    av.setUint32(24, 1, true);
+    av.setUint32(28, 6, true);
+    av.setUint32(32, 1, true); // AF_ICON
+
+    const rate = new Uint8Array(4*n);
+    const rv = new DataView(rate.buffer);
+    frames.forEach((f,i) => rv.setUint32(i*4, Math.max(1, Math.round((f.delay/1000)*60)), true));
+
+    const anihChunk = riffChunk('anih', anih);
+    const rateChunk = riffChunk('rate', rate);
+
+    const iconChunks = curBuffers.map(b => riffChunk('icon', b));
+    let framLen = 4;
+    iconChunks.forEach(c => framLen += c.length);
+    const framBody = new Uint8Array(framLen);
+    framBody.set([0x66,0x72,0x61,0x6D], 0); // 'fram'
+    let off = 4;
+    iconChunks.forEach(c => { framBody.set(c, off); off += c.length; });
+    const framChunk = riffChunk('LIST', framBody);
+
+    let riffLen = 4;
+    riffLen += anihChunk.length + rateChunk.length + framChunk.length;
+    const riffBody = new Uint8Array(riffLen);
+    riffBody.set([0x41,0x43,0x4F,0x4E], 0); // 'ACON'
+    let o2 = 4;
+    riffBody.set(anihChunk, o2); o2 += anihChunk.length;
+    riffBody.set(rateChunk, o2); o2 += rateChunk.length;
+    riffBody.set(framChunk, o2); o2 += framChunk.length;
+
+    const riff = riffChunk('RIFF', riffBody);
+    return new Blob([riff], { type: 'application/octet-stream' });
+  }
+
+  /* ---------------- conversion flow ---------------- */
+
   async function convert(){
     if (!currentFile || !currentImg || !selectedFmt) return;
+    if (selectedFmt === 'ani' && !isGif) return;
+
     goBtn.disabled = true;
     resetResult();
     terminal.classList.add('show');
 
     const baseName = currentFile.name.replace(/\.[^.]+$/, '');
     await typeLine(`$ read ${currentFile.name}`, null, 100);
-    await typeLine(`  ${currentImg.naturalWidth}×${currentImg.naturalHeight} · ${humanSize(currentFile.size)}`, null, 220);
+    await typeLine(`  ${currentImg.naturalWidth}×${currentImg.naturalHeight} · ${humanSize(currentFile.size)}`, null, 200);
 
-    let blob, outName, mime;
+    let blob, outName;
 
     if (selectedFmt === 'ico'){
-      await typeLine(`$ encode --format ico --sizes 16,32,48,256`, 'tag', 260);
+      await typeLine(`$ encode --format ico --sizes 16,32,48,256`, 'tag', 240);
       blob = await buildIco(currentImg, [16,32,48,256]);
       outName = `${baseName}.ico`;
-      await typeLine(`  building multi-resolution container...`, null, 320);
+
+    } else if (selectedFmt === 'cur'){
+      const hx = Math.round(hotspotRatio.x * cursorSize);
+      const hy = Math.round(hotspotRatio.y * cursorSize);
+      await typeLine(`$ encode --format cur --size ${cursorSize} --hotspot ${hx},${hy}`, 'tag', 240);
+      const raw = await buildCurBytes(currentImg, cursorSize, hx, hy);
+      blob = new Blob([raw], { type: 'image/x-icon' });
+      outName = `${baseName}.cur`;
+
+    } else if (selectedFmt === 'ani'){
+      await typeLine(`$ decode gif → frames`, 'tag', 200);
+      const buf = await currentFile.arrayBuffer();
+      const gifData = gifToFrames(buf);
+      await typeLine(`  ${gifData.frames.length} cuadros encontrados`, null, 260);
+      const hx = Math.round(hotspotRatio.x * cursorSize);
+      const hy = Math.round(hotspotRatio.y * cursorSize);
+      await typeLine(`$ encode --format ani --size ${cursorSize} --hotspot ${hx},${hy}`, 'tag', 260);
+      blob = await buildAni(gifData.frames, cursorSize, hx, hy);
+      outName = `${baseName}.ani`;
+
     } else {
       const mimeMap = { png: 'image/png', jpg: 'image/jpeg', webp: 'image/webp' };
-      mime = mimeMap[selectedFmt];
-      await typeLine(`$ encode --format ${selectedFmt}`, 'tag', 260);
+      const mime = mimeMap[selectedFmt];
+      await typeLine(`$ encode --format ${selectedFmt}`, 'tag', 240);
       const c = document.createElement('canvas');
       c.width = currentImg.naturalWidth;
       c.height = currentImg.naturalHeight;
       const ctx = c.getContext('2d');
-      if (selectedFmt === 'jpg'){
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillRect(0,0,c.width,c.height);
-      }
+      if (selectedFmt === 'jpg'){ ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0,0,c.width,c.height); }
       ctx.drawImage(currentImg, 0, 0);
       blob = await new Promise(r => c.toBlob(r, mime, 0.92));
       outName = `${baseName}.${selectedFmt}`;
     }
 
-    await typeLine(`  writing output...`, null, 260);
-    await typeLine(`✓ ${outName} listo (${humanSize(blob.size)})`, 'ok', 260);
-    await typeLine(` ▍`, 'cursor', 80);
+    await typeLine(`  writing output...`, null, 240);
+    await typeLine(`✓ ${outName} listo (${humanSize(blob.size)})`, 'ok', 240);
+    await typeLine(` ▍`, 'cursor', 60);
 
     const url = URL.createObjectURL(blob);
     dlBtn.href = url;
